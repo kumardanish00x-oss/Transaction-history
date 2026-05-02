@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Transaction History</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<h2>Transaction History</h2>
+<div id="list"></div>
+
+<script>
+fetch('data.json')
+.then(res => res.json())
+.then(data => {
+  let list = document.getElementById("list");
+
+  data.forEach(item => {
+    let div = document.createElement("div");
+
+    div.innerHTML = `
+      <b>${item.title}</b> - ${item.amount} <br>
+      <small>${item.date}</small><hr>
+    `;
+
+    list.appendChild(div);
+  });
+});
+</script>
+
+</body>
+</html>
